@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz — Pensamiento Computacional</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+
+<div class="contenedor">
+
+  <!-- ══ PANTALLA 1: Bienvenida ══════════════════════════════════════════ -->
+  <section id="pantalla-bienvenida" class="pantalla">
+    <div class="bienvenida-icono">🧠</div>
+    <h1 class="bienvenida-titulo">Quiz de Pensamiento Computacional</h1>
+    <p class="bienvenida-subtitulo">
+      Pon a prueba tus conocimientos sobre algoritmos, bucles, variables y más.
+    </p>
+
+    <div class="info-chips">
+      <span class="chip">📝 8 preguntas</span>
+      <span class="chip">❤️ 3 vidas</span>
+      <span class="chip">⭐ Puntos por acierto</span>
+    </div>
+
+    <button id="btn-iniciar" class="btn btn-primario">¡Comenzar!</button>
+  </section>
+
+
+  <!-- ══ PANTALLA 2: Juego ═══════════════════════════════════════════════ -->
+  <section id="pantalla-juego" class="pantalla oculto">
+
+    <!-- HUD: puntaje y vidas -->
+    <div class="hud">
+      <div>
+        <span class="hud-label">Puntaje</span>
+        <span class="hud-puntaje" id="puntaje">0</span>
+      </div>
+      <div style="text-align:right">
+        <span class="hud-label">Vidas</span>
+        <span id="vidas">❤️ ❤️ ❤️</span>
+      </div>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div class="progreso-fondo">
+      <div class="progreso-barra" id="barra-progreso"></div>
+    </div>
+
+    <!-- Meta info de la pregunta -->
+    <div class="pregunta-meta">
+      <span class="categoria-badge" id="categoria">Categoría</span>
+      <span id="num-pregunta">Pregunta 1 de 8</span>
+    </div>
+
+    <!-- Texto de la pregunta -->
+    <p class="pregunta-texto" id="texto-pregunta"></p>
+
+    <!-- Opciones de respuesta (se generan desde JS) -->
+    <div class="opciones" id="opciones"></div>
+
+    <!-- Feedback tras responder -->
+    <div class="feedback oculto" id="feedback">
+      <span id="texto-feedback"></span>
+    </div>
+
+    <!-- Botón para avanzar -->
+    <button id="btn-siguiente" class="btn btn-lima oculto">Siguiente →</button>
+
+  </section>
+
+
+  <!-- ══ PANTALLA 3: Fin del juego ═══════════════════════════════════════ -->
+  <section id="pantalla-fin" class="pantalla oculto">
+
+    <div class="fin-medalla" id="medalla-final">🏆</div>
+    <h2 class="fin-titulo">¡Juego terminado!</h2>
+
+    <div class="fin-stats">
+      <div class="stat-card">
+        <div class="stat-valor" id="puntaje-final">0</div>
+        <div class="stat-label">Puntos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-valor" id="porcentaje-final">0%</div>
+        <div class="stat-label">Aciertos</div>
+      </div>
+    </div>
+
+    <p class="fin-mensaje" id="mensaje-final"></p>
+
+    <button id="btn-reiniciar" class="btn btn-primario">Jugar de nuevo</button>
+
+  </section>
+
+</div><!-- /contenedor -->
+
+
+<!-- Scripts: primero las clases, luego los datos, luego main -->
+<script src="js/Pregunta.js"></script>
+<script src="js/Juego.js"></script>
+<script src="js/UI.js"></script>
+<script src="js/preguntas.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
