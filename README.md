@@ -137,6 +137,101 @@ xdg-open index.html
 
 ---
 
+## Pruebas de funcionamiento
+
+Se realizaron las siguientes pruebas manualmente ejecutando el proyecto en el navegador:
+
+| Caso de prueba | Acción | Resultado esperado | Resultado obtenido |
+|---|---|---|---|
+| Inicio del juego | Clic en "Comenzar" | Aparece la primera pregunta | Correcto |
+| Respuesta correcta | Seleccionar opción correcta | Feedback verde, suma puntos | Correcto |
+| Respuesta incorrecta | Seleccionar opción incorrecta | Feedback rojo, resta una vida | Correcto |
+| Sin vidas | Fallar 3 preguntas seguidas | Pantalla final con estado "perdido" | Correcto |
+| Completar quiz | Responder las 8 preguntas | Pantalla final con puntaje y medalla | Correcto |
+| Reiniciar | Clic en "Jugar de nuevo" | Vuelve al inicio con puntaje en 0 | Correcto |
+| Preguntas aleatorias | Reiniciar el juego | Las preguntas salen en orden distinto | Correcto |
+
+---
+
+### 1. Pantalla de inicio
+![Pantalla de inicio](img/1.png)
+
+### 2. Pregunta con respuesta correcta
+![Respuesta correcta](img/2.png)
+
+### 3. Pregunta con respuesta incorrecta
+![Respuesta incorrecta](img/3.png)
+
+### 4. Pantalla final
+![Pantalla final](img/4.png)
+
+---
+
+## Análisis de recursos computacionales
+
+El proyecto es liviano por diseño, pensado para correr en computadoras de colegio con recursos limitados.
+
+**Memoria:** se crean 3 objetos principales en memoria (Pregunta x8, Juego x1, UI x1).
+El arreglo de 8 preguntas ocupa menos de 5 KB en memoria RAM.
+No se usan librerías externas, por lo que no hay dependencias adicionales que consuman recursos.
+
+**Tiempo de carga:** al no tener imágenes, fuentes externas ni librerías, el tiempo de carga
+es menor a 100ms en cualquier computadora con navegador moderno.
+
+**Procesamiento:** cada interacción del usuario (clic en opción) ejecuta como máximo 5 funciones
+encadenadas. No hay operaciones costosas ni ciclos infinitos. El método `Array.sort()`
+con `Math.random()` para mezclar preguntas es O(n log n) con n=8, lo cual es instantáneo.
+
+**Conclusión de recursos:** el proyecto es eficiente y puede ejecutarse sin problemas
+en equipos con hardware básico, sin conexión a internet y sin instalar nada adicional.
+
+---
+
+## Mejoras respecto al prototipo inicial
+
+El prototipo inicial (versión 1) era una página HTML simple con las preguntas escritas
+directamente en el HTML, sin lógica separada ni POO:
+
+- Las preguntas estaban hardcodeadas en el HTML como listas
+- No había puntaje ni vidas
+- No existía feedback visual al responder
+- El código mezclaba HTML, CSS y JS en un solo archivo
+- No había pantalla de inicio ni pantalla final
+
+La versión actual (versión 2, entrega final) incorpora las siguientes mejoras:
+
+- Arquitectura POO con 3 clases separadas (Pregunta, Juego, UI)
+- Sistema de puntaje con bonus por vidas restantes
+- Sistema de 3 vidas con pérdida progresiva
+- Feedback visual inmediato (verde/rojo) tras cada respuesta
+- Barra de progreso animada
+- Pantalla de bienvenida, pantalla de juego y pantalla final
+- Preguntas mezcladas aleatoriamente en cada partida
+- Código separado en archivos por responsabilidad
+- Comentarios explicativos en todas las funciones y clases
+
+---
+
+## Conclusiones
+
+Este proyecto permitió aplicar en la práctica los fundamentos del lenguaje de programación
+JavaScript bajo el paradigma de Programación Orientada a Objetos.
+
+Se comprendió la importancia de separar responsabilidades en distintas clases: la clase
+Pregunta modela los datos, la clase Juego maneja la lógica, y la clase UI se encarga
+de lo visual. Esta separación hace el código más fácil de leer, mantener y escalar.
+
+El uso de estructuras de control (if/else, forEach), tipos de datos (string, number,
+boolean, array, object), funciones de biblioteca (Math.random, setTimeout, addEventListener)
+y declaraciones de variables (let, const) demostró cómo los elementos básicos del lenguaje
+se combinan para construir una aplicación real y funcional.
+
+La gamificación resultó ser una estrategia efectiva para enseñar pensamiento computacional:
+al envolver los conceptos en un juego con puntos, vidas y medallas, el estudiante de
+colegio tiene una motivación concreta para aprender y repetir la experiencia.
+
+---
+
 ## Autor
 
 Proyecto desarrollado para el curso Fundamentos de Programación.
